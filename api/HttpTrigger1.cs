@@ -18,7 +18,20 @@ namespace Company.Function
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
-            return new OkObjectResult("Welcome to Azure Functions!");
+
+            // return all headers of the request
+            // loop over them. store them in a dictionary that will be returned as a response
+            var headers = req.Headers;
+            var headersDictionary = new Dictionary<string, string>();
+
+            foreach (var header in headers)
+            {
+                headersDictionary.Add(header.Key, header.Value);
+            }
+
+            return new OkObjectResult(headersDictionary);
+
+
         }
     }
 }
