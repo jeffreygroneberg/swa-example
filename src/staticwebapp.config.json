@@ -2,13 +2,26 @@
   "routes": [
     {
       "route": "/*",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": [
+        "authenticated"
+      ]
     }
   ],
   "responseOverrides": {
     "401": {
       "statusCode": 302,
       "redirect": "/.auth/login/aad"
+    }
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/168634fd-afcd-4fc9-87dd-5f88f59db99d/v2.0",
+          "clientIdSettingName": "3da7bbbd-b651-4f32-94a5-768b74b9353a",
+          "clientSecretSettingName": "AAD_CLIENT_SECRET"
+        }
+      }
     }
   }
 }
