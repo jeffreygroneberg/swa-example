@@ -1,3 +1,29 @@
+# Node modules
 node_modules/
+
+# Test results
 /test-results/
 
+# C# specific ignores
+*.csproj.user
+*.suo
+*.cache
+*.pdb
+*.user
+*.rsuser
+*.sln.docstates
+
+# Azure Functions
+local.settings.json
+bin/
+obj/
+
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+
+# Backup files
+*.bak
+*.swp
+*.tmp
