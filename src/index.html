@@ -4,14 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+  <title>Call API with Custom Header</title>
 </head>
 
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
+  <h1>Call API with Custom Header</h1>
+  <button id="callApiButton">Call API</button>
+
+  <script>
+    async function callHttpTrigger1() {
+      const url = '/api/HttpTrigger1';
+      const customHeaderValue = 'your-custom-header-value';
+
+      try {
+        const response = await fetch(url, {
+          method: 'GET', // or 'POST' depending on your endpoint
+          headers: {
+            'Content-Type': 'application/json',
+            'Custom-Header': customHeaderValue
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error calling the API:', error);
+      }
+    }
+
+    document.getElementById('callApiButton').addEventListener('click', callHttpTrigger1);
+  </script>
 </body>
 
 </html>
